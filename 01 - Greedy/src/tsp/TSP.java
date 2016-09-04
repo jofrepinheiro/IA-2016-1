@@ -252,9 +252,9 @@ public class TSP {
 	
 	public static void main(String[] args) {
 		TSP tsp = new TSP();
-		String arq = "/media/Dados/Andre/Dropbox/UFS/Busca e Otimização/TSP/Data/pr76.tsp";
+		String arq = "C:/Users/Jofre/Documents/GitHub/IA-2016-1/01 - Greedy/src/pr76.tsp";
 		tsp.carregarTSP(arq); 
-		String opt = "/media/Dados/Andre/Dropbox/UFS/Busca e Otimização/TSP/Data/pr76.opt.tour";
+		String opt = "C:/Users/Jofre/Documents/GitHub/IA-2016-1/01 - Greedy/src/pr76.opt.tour";
 		tsp.carregarOptTour(opt);
 		System.out.println(tsp.avaliar(tsp.opt_tour));
 	}
