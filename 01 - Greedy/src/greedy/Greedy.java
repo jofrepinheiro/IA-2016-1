@@ -16,6 +16,10 @@ public class Greedy extends TSP{
 		preencherListaNos(distancias);
 //		DefaultTreeModel tree = new DefaultTreeModel();
 		
+		while(listaNos.size()>=0){
+			no = escolheNo();
+			removeNo(0);
+		}
 	}
 	
 	
@@ -24,5 +28,11 @@ public class Greedy extends TSP{
 			listaNos.add(no);
 			System.out.println(no[0]);
 		}
+	}
+	
+	
+	//Olhar? o indice vai mudar depois
+	public void removeNoLista(int index){
+		listaNos.remove(index);
 	}
 }
