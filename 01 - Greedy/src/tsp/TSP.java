@@ -2,6 +2,15 @@ package tsp;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+
+import jdk.nashorn.internal.runtime.ListAdapter;
+import sun.reflect.generics.tree.Tree;
 
 /**
  * Fique atendo por que a matriz de distância está instanciada de 0 até dimensão-1
@@ -249,16 +258,4 @@ public class TSP {
 				opt_tour[i++] = num;
 		}
 	}
-	
-	public static void main(String[] args) {
-		TSP tsp = new TSP();
-		String arq = "C:/Users/Jofre/Documents/GitHub/IA-2016-1/01 - Greedy/src/pr76.tsp";
-		tsp.carregarTSP(arq); 
-		String opt = "C:/Users/Jofre/Documents/GitHub/IA-2016-1/01 - Greedy/src/pr76.opt.tour";
-		tsp.carregarOptTour(opt);
-		System.out.println(tsp.avaliar(tsp.opt_tour));
-	}
-	
-	
-
 }
