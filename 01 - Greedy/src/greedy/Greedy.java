@@ -3,46 +3,54 @@ package greedy;
 import greedy.Tree.Node;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.PriorityQueue;
 
 import tsp.TSP;
 
 public class Greedy extends TSP{
-	
-	
 
-	public ArrayList<Tree.Node> listaNos = new ArrayList();
-	
-	public void acharCaminho(double[][] distancias) {
-		preencherListaNos(distancias);
+	protected ArrayList<Node> listaNos = new ArrayList();
+	public PriorityQueue<Node> fila = new PriorityQueue<Node>(1);
 
-		Tree arvore = new Tree(listaNos.get(0));
-		
-		int c = 0;
-		for (Node no : listaNos) {
-			System.out.println(listaNos.get(c).distancia);
-			c++;
-		}
-//		
-//		
-//		
-//		while(listaNos.size()>=0){
-////			no = escolheNo();
-////			removeNo(0);
-//		}
+	public Greedy(String path){
+		carregarTSP(path);
 	}
-	
-	
-	public void preencherListaNos(double[][] distancias) {
-		int c = 0;
-	 	for (double[] no : distancias) {
-			listaNos.add(new Node(c, no[0]));
-//			System.out.println(no[0]);
-			c++;
+
+	public void acharCaminho() {
+		Tree arvore = new Tree(0);
+		expandir(arvore.raiz);
+		expandir(arvore.raiz.filhos.get(2));
+		expandir(arvore.raiz.filhos.get(2).filhos.get(2));
+	}
+
+
+	private void expandir(Node noExp) {
+		preencherListaNos(noExp);
+		System.out.println("Expansao de " + noExp.id);
+		for (Node no : listaNos){
+			if(!noExp.caminho.contains(no.id) && no.id != noExp.id){
+					noExp.filhos.add(no);				
+			}
+		}
+		for(Node no : noExp.filhos){
+			System.out.println("ID: " + no.id);
 		}
 	}
-	
-	
+
+
+	public void preencherListaNos(Node noExp) {
+		listaNos.clear();
+		int c = 0;
+		for (double[] no : distancias) {
+			Node novoNo = new Node(c, no[noExp.id]);
+			novoNo.caminho.addAll(noExp.caminho);
+			novoNo.caminho.add(noExp.id);
+			listaNos.add(novoNo);
+			c++;
+		}
+	}
+
+
 	//Olhar? o indice vai mudar depois
 	public void removeNoLista(int index){
 		listaNos.remove(index);
